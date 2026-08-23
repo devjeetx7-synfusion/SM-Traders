@@ -568,6 +568,7 @@ body.sm-lock{overflow:hidden}
   border-top:1px solid rgba(255,255,255,.1);
   padding-bottom:env(safe-area-inset-bottom);
 }
+.sm-actionbar ~ .sm-cms { margin-bottom: 66px; }
 .sm-actionbar a{
   min-height:58px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
   color:#fff;font-size:11px;font-weight:700;letter-spacing:.04em;
@@ -646,9 +647,13 @@ body.sm-lock{overflow:hidden}
   .sm-actionbar{display:none}
   .sm-footer{padding-bottom:clamp(40px,5vw,68px)}
 }
-
-@media (min-width:1280px){
-  .sm-owner{grid-template-columns:260px minmax(0,1fr)}
+@media (max-width:1023px){
+  body { padding-bottom: calc(66px + env(safe-area-inset-bottom)); }
+  .sm-announce .sm-container{justify-content:center;text-align:center}
+  .sm-announce .sm-hide-m{display:none}
+  .sm-hero-visual{order:2}
+  .sm-float-a{left:8px;bottom:14px}
+  .sm-float-b{right:8px;top:14px}
 }
 
 @media (prefers-reduced-motion:reduce){

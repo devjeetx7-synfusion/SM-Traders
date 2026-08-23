@@ -390,6 +390,7 @@ body.sm-lock{overflow:hidden}
 .sm-filters{
   display:flex;
   overflow-x:auto;
+    max-width:100%;
   scrollbar-width:none;
   -webkit-overflow-scrolling:touch;
   gap:8px;margin-top:22px;

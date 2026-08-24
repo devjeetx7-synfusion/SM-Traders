@@ -1321,81 +1321,244 @@
      CURVED FOOTER & SYNFUSION IDENTITY
      ============================================================ */
   .footer-wrapper {
-    background: var(--bg-light);
-    padding-top: 40px;
-    padding-bottom: 24px;
+    background: transparent;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .footer-curve-top {
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    margin-bottom: -1px;
+  }
+
+  .footer-curve-svg {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 56px;
+  }
+
+  @media (min-width: 768px) {
+    .footer-curve-svg {
+      height: 80px;
+    }
   }
 
   .footer-card {
     background: var(--charcoal);
-    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-    padding: 56px 24px 32px 24px;
     color: #ffffff;
+    padding: 24px 24px 44px 24px;
     text-align: center;
   }
 
-  .footer-brand-title {
-    font-size: 24px;
-    font-weight: 900;
+  .footer-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  /* Top WhatsApp CTA */
+  .footer-wa-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #181818 0%, #222222 100%);
     color: #ffffff;
-    letter-spacing: -0.01em;
-  }
-
-  .footer-tagline {
-    font-size: 13px;
-    color: var(--orange-primary);
+    border: 1px solid rgba(255, 106, 0, 0.4);
+    padding: 16px 36px;
+    border-radius: 50px;
+    font-size: 17px;
     font-weight: 700;
-    margin-top: 4px;
-    margin-bottom: 28px;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 106, 0, 0.15);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
-  .footer-nav {
+  .footer-wa-icon {
+    width: 22px;
+    height: 22px;
+    fill: #25D366;
+    flex-shrink: 0;
+  }
+
+  .footer-wa-text {
+    letter-spacing: -0.01em;
+    color: #ffffff;
+  }
+
+  .footer-wa-arrow {
+    width: 20px;
+    height: 20px;
+    stroke: var(--orange-primary);
+    flex-shrink: 0;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .footer-wa-cta:hover {
+    transform: translateY(-3px);
+    border-color: var(--orange-primary);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 106, 0, 0.3);
+    color: #ffffff;
+  }
+
+  .footer-wa-cta:hover .footer-wa-arrow {
+    transform: translateX(5px);
+  }
+
+  .footer-wa-cta:active {
+    transform: scale(0.98);
+  }
+
+  /* SynFusion Branding */
+  .footer-synfusion {
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+
+  .synfusion-brand-text {
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.75) 50%, var(--orange-primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+
+  /* Legal Links */
+  .footer-legal-links {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 24px;
+    gap: 28px;
     flex-wrap: wrap;
-    margin-bottom: 32px;
   }
 
-  .footer-nav a {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 14px;
-    font-weight: 600;
+  .legal-link {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
     transition: color 0.2s ease;
   }
 
-  .footer-nav a:hover {
-    color: #ffffff;
-  }
-
-  .footer-divider {
-    height: 1px;
-    background: var(--border-dark);
-    max-width: 800px;
-    margin: 0 auto 24px auto;
-  }
-
-  .footer-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 800px;
-    margin: 0 auto;
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.5);
-  }
-
-  .synfusion-credit {
-    font-weight: 800;
+  .legal-link:hover {
     color: var(--orange-primary);
+  }
+
+  /* Copyright */
+  .footer-copyright {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 500;
     letter-spacing: 0.05em;
   }
 
+  /* Legal Modal */
+  .legal-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .legal-modal-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .legal-modal-card {
+    background: #181818;
+    border: 1px solid var(--border-dark);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 540px;
+    color: #ffffff;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+  }
+
+  .legal-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-dark);
+  }
+
+  .legal-modal-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .legal-modal-close {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 4px 8px;
+    line-height: 1;
+  }
+
+  .legal-modal-close:hover {
+    color: #ffffff;
+  }
+
+  .legal-modal-body {
+    padding: 20px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+
   @media (max-width: 600px) {
-    .footer-bottom {
-      flex-direction: column;
-      gap: 12px;
+    .footer-card {
+      padding: 16px 16px 36px 16px;
+    }
+    .footer-inner {
+      gap: 24px;
+    }
+    .footer-wa-cta {
+      width: 100%;
+      padding: 14px 20px;
+      font-size: 15px;
+    }
+    .footer-legal-links {
+      gap: 16px 20px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .footer-wa-cta,
+    .footer-wa-arrow {
+      transition: none !important;
+      transform: none !important;
     }
   }
   ]]></b:skin>
@@ -1465,7 +1628,6 @@
       <div class='container'>
         <div class='hero-layout'>
           <div class='synfusion-hero-tag'>
-            <span class='syn-dot'></span>
             <span>SynFusion</span>
           </div>
 
@@ -1700,30 +1862,57 @@
 
   <!-- Footer -->
   <footer class='footer-wrapper'>
+    <div class='footer-curve-top'>
+      <svg class='footer-curve-svg' viewBox='0 0 1440 96' fill='none' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' aria-hidden='true'>
+        <path d='M0,96 C480,0 960,0 1440,96 L1440,96 L0,96 Z' fill='#101010'/>
+      </svg>
+    </div>
     <div class='footer-card'>
-      <div class='footer-brand-title'>SM TRADERS</div>
-      <div class='footer-tagline'>Electrical &#8226; Solar &#8226; Installation &#8226; Maintenance</div>
+      <div class='footer-inner'>
+        <!-- WhatsApp CTA -->
+        <a class='footer-wa-cta' id='footerWaBtn' href='https://wa.me/919876543210?text=Hello%20SM%20Traders%2C%20I%20would%20like%20to%20chat.' target='_blank' rel='noopener noreferrer'>
+          <svg class='footer-wa-icon' viewBox='0 0 24 24' fill='currentColor' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+            <path d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z'/>
+            <path d='M12 0C5.373 0 0 5.373 0 12c0 2.118.552 4.107 1.517 5.833L0 24l6.327-1.477A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.848 0-3.582-.494-5.086-1.358l-.365-.21-3.758.877.893-3.649-.234-.377A9.957 9.957 0 012 12c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10z'/>
+          </svg>
+          <span class='footer-wa-text'>Chat on WhatsApp</span>
+          <svg class='footer-wa-arrow' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+            <line x1='5' y1='12' x2='19' y2='12'></line>
+            <polyline points='12 5 19 12 12 19'></polyline>
+          </svg>
+        </a>
 
-      <nav class='footer-nav' aria-label='Footer Navigation'>
-        <a href='#top'>Home</a>
-        <a href='#electrical'>Services</a>
-        <a href='#products'>Products</a>
-        <a href='#solar'>Solar</a>
-        <a href='#work'>Our Work</a>
-        <a href='#about'>About</a>
-        <a href='#contact'>Contact</a>
-      </nav>
+        <!-- SynFusion Branding -->
+        <div class='footer-synfusion'>
+          <span class='synfusion-brand-text'>SynFusion</span>
+        </div>
 
-      <div class='footer-divider'></div>
+        <!-- Legal Links -->
+        <div class='footer-legal-links'>
+          <a href='#privacy' class='legal-link' data-legal='privacy'>Privacy Policy</a>
+          <a href='#terms' class='legal-link' data-legal='terms'>Terms &amp; Conditions</a>
+          <a href='#disclaimer' class='legal-link' data-legal='disclaimer'>Disclaimer</a>
+        </div>
 
-      <div class='footer-bottom'>
-        <div class='footer-copy'>
+        <!-- Copyright -->
+        <div class='footer-copyright'>
           &#169; <span id='yearSpan'>2026</span> SM TRADERS
         </div>
-        <div class='synfusion-credit'>SynFusion</div>
       </div>
     </div>
   </footer>
+
+  <!-- Legal Info Modal -->
+  <div class='legal-modal-backdrop' id='legalModalBackdrop' role='dialog' aria-modal='true' aria-labelledby='legalModalTitle'>
+    <div class='legal-modal-card'>
+      <div class='legal-modal-header'>
+        <h3 class='legal-modal-title' id='legalModalTitle'>Legal Notice</h3>
+        <button class='legal-modal-close' id='legalModalCloseBtn' type='button' aria-label='Close modal'>&#10005;</button>
+      </div>
+      <div class='legal-modal-body' id='legalModalContent'>
+      </div>
+    </div>
+  </div>
 
   <!-- Blogger CMS required section (hidden) -->
   <div class='sm-cms-hide'>
@@ -1744,9 +1933,10 @@
 
     /* Inject skin stylesheet if loaded as raw XML in browser */
     try {
-      var skinTag = document.querySelector("b\:skin, skin");
-      if (skinTag && skinTag.textContent) {
+      var skinTag = document.getElementsByTagName("b:skin")[0] || document.querySelector("skin");
+      if (skinTag && skinTag.textContent && !document.getElementById("injected-skin")) {
         var styleEl = document.createElementNS("http://www.w3.org/1999/xhtml", "style");
+        styleEl.id = "injected-skin";
         styleEl.setAttribute("type", "text/css");
         styleEl.textContent = skinTag.textContent;
         document.head.appendChild(styleEl);
@@ -2001,6 +2191,54 @@
     }
 
     if (waMenuItem) waMenuItem.href = buildWaUrl();
+
+    var footerWaBtn = $("#footerWaBtn");
+    if (footerWaBtn) {
+      footerWaBtn.href = buildWaUrl("Hello SM Traders, I came from your website footer and would like to chat.");
+    }
+
+    var legalModal = $("#legalModalBackdrop");
+    var legalTitle = $("#legalModalTitle");
+    var legalContent = $("#legalModalContent");
+    var legalCloseBtn = $("#legalModalCloseBtn");
+
+    var legalTexts = {
+      privacy: {
+        title: "Privacy Policy",
+        html: "<p>SM Traders respects your privacy. Any information collected via WhatsApp or contact forms is strictly used to fulfill electrical and solar service requests and will never be shared with third parties without consent.</p>"
+      },
+      terms: {
+        title: "Terms &amp; Conditions",
+        html: "<p>All electrical, solar installation, and maintenance services provided by SM Traders are subject to standard safety regulations and agreed project estimates. Timelines and warranties are specified upon service confirmation.</p>"
+      },
+      disclaimer: {
+        title: "Disclaimer",
+        html: "<p>The information provided on this site is for general guidance on electrical and solar products and services. Estimates and specifications may vary based on site inspections and local utility guidelines.</p>"
+      }
+    };
+
+    $$(".legal-link").forEach(function(link) {
+      link.addEventListener("click", function(e) {
+        e.preventDefault();
+        var key = link.getAttribute("data-legal");
+        if (legalTexts[key] && legalModal && legalTitle && legalContent) {
+          legalTitle.textContent = legalTexts[key].title;
+          legalContent.innerHTML = legalTexts[key].html;
+          legalModal.classList.add("active");
+        }
+      });
+    });
+
+    if (legalCloseBtn && legalModal) {
+      legalCloseBtn.addEventListener("click", function() {
+        legalModal.classList.remove("active");
+      });
+      legalModal.addEventListener("click", function(e) {
+        if (e.target === legalModal) {
+          legalModal.classList.remove("active");
+        }
+      });
+    }
 
     if (floatingWaBtn && actionMenuPopup) {
       floatingWaBtn.addEventListener("click", function (e) {

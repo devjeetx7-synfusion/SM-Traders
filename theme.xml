@@ -437,6 +437,8 @@
   .header-mascot-avatar img {
     width: 32px;
     height: 32px;
+    max-width: 32px;
+    max-height: 32px;
     object-fit: contain;
   }
   .header-mascot-avatar span {
@@ -659,42 +661,27 @@
     height: auto;
     max-height: 420px;
     object-fit: contain;
-    filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.16));
+    filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.12));
     transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
   }
   /* Wolf Ground Composition */
   .wolf-ground-stage {
     position: relative;
-    width: 85%;
-    height: 36px;
-    margin-top: -12px;
+    width: 75%;
+    height: 16px;
+    margin-top: -6px;
     display: flex;
     align-items: center;
     justify-content: center;
     pointer-events: none;
     z-index: 1;
   }
-  .wolf-ground-glow {
-    position: absolute;
-    width: 90%;
-    height: 100%;
-    background: radial-gradient(ellipse at center, rgba(255, 106, 0, 0.22) 0%, rgba(255, 106, 0, 0) 70%);
-    border-radius: 50%;
-    filter: blur(6px);
-  }
-  .wolf-ground-energy {
-    position: absolute;
-    width: 75%;
-    height: 12px;
-    background: radial-gradient(ellipse at center, rgba(255, 106, 0, 0.15) 0%, transparent 80%);
-    border-top: 1px dashed rgba(255, 106, 0, 0.3);
-  }
   .wolf-ground-shadow {
-    position: absolute;
     width: 70%;
-    height: 16px;
-    background: radial-gradient(ellipse at center, rgba(16, 16, 16, 0.40) 0%, rgba(16, 16, 16, 0) 75%);
+    height: 12px;
+    background: radial-gradient(ellipse at center, rgba(16, 16, 16, 0.35) 0%, rgba(16, 16, 16, 0) 75%);
     border-radius: 50%;
+    filter: blur(4px);
   }
 
   /* Hero Floating Cards */
@@ -1229,31 +1216,39 @@
   .owners-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
+    gap: clamp(10px, 2.5vw, 24px);
     margin-top: 32px;
-  }
-  @media (max-width: 480px) {
-    .owners-grid {
-      gap: 10px;
-    }
   }
 
   .owner-card {
     background: var(--warm-white);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
-    padding: 16px;
+    padding: clamp(12px, 2.5vw, 20px);
     box-shadow: var(--shadow-sm);
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .owner-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--orange-primary);
   }
   @media (min-width: 600px) {
     .owner-card {
       flex-direction: row;
-      align-items: flex-start;
-      padding: 20px;
+      text-align: left;
+      align-items: center;
       gap: 16px;
     }
   }
@@ -1262,10 +1257,10 @@
     box-shadow: var(--shadow-md);
   }
   .owner-portrait-area {
-    width: 56px;
-    height: 56px;
-    min-width: 56px;
-    min-height: 56px;
+    width: clamp(64px, 12vw, 90px);
+    height: clamp(64px, 12vw, 90px);
+    min-width: clamp(64px, 12vw, 90px);
+    min-height: clamp(64px, 12vw, 90px);
     border-radius: var(--radius-sm);
     overflow: hidden;
     position: relative;
@@ -1282,7 +1277,7 @@
     height: 100%;
     display: grid;
     place-items: center;
-    font-size: 20px;
+    font-size: clamp(22px, 4vw, 32px);
     font-weight: 900;
     color: var(--orange-primary);
     background: radial-gradient(circle at 50% 30%, rgba(255, 106, 0, 0.25), transparent 70%), var(--charcoal);
@@ -1290,50 +1285,20 @@
   .owner-info {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 3px;
     min-width: 0;
   }
-  .role-badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 2px 8px;
-    border-radius: 999px;
-    background: var(--orange-soft);
-    color: var(--orange-primary);
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    align-self: flex-start;
-  }
   .owner-info h3 {
-    font-size: clamp(15px, 2vw, 18px);
+    font-size: clamp(15px, 2.2vw, 18px);
     font-weight: 800;
     color: var(--charcoal);
-    line-height: 1.2;
-    margin-top: 2px;
+    line-height: 1.25;
   }
-  .owner-company {
-    display: none;
-  }
-  .owner-info p {
-    font-size: 12.5px;
-    line-height: 1.45;
-    color: var(--muted);
-    margin-top: 2px;
-  }
-  .owner-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    margin-top: 6px;
-  }
-  .owner-tags span {
-    padding: 2px 8px;
-    border-radius: 999px;
-    border: 1px solid var(--border);
-    font-size: 10.5px;
+  .owner-role {
+    font-size: clamp(12px, 1.5vw, 13px);
     font-weight: 700;
-    color: var(--text-main);
+    color: var(--orange-primary);
+    letter-spacing: 0.02em;
   }
 
   /* Contact & Form Section */
@@ -1459,84 +1424,99 @@
   }
 
   /* Footer */
-  .footer {
+  .footer-wrapper {
+    padding: 32px 16px 24px;
+    background: var(--bg-light);
+  }
+  .footer-card {
+    max-width: 1280px;
+    margin-inline: auto;
     background: var(--charcoal);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: clamp(24px, 4vw, 40px);
+    padding: clamp(32px, 5vw, 56px) clamp(20px, 4vw, 48px) clamp(24px, 3vw, 36px);
     color: rgba(255, 255, 255, 0.7);
-    padding-block: clamp(36px, 5vw, 56px) 32px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-  }
-  .footer-main {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    gap: 20px;
+    text-align: center;
   }
-  .footer-brand .brand-logo {
-    gap: 10px;
+  .footer-brand-title {
+    font-size: clamp(22px, 3.5vw, 32px);
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+  }
+  .footer-tagline {
+    margin-top: 8px;
+    font-size: clamp(12px, 1.5vw, 14px);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--orange-primary);
+    text-transform: uppercase;
   }
   .footer-nav {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 18px;
+    justify-content: center;
+    gap: clamp(12px, 3vw, 24px);
+    margin-top: 28px;
   }
   .footer-nav a {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 14px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 14.5px;
     font-weight: 600;
     transition: color 0.2s ease;
   }
   .footer-nav a:hover {
     color: var(--orange-primary);
   }
-  .footer-action .btn-sm {
-    min-height: 40px;
-    padding: 8px 18px;
-    font-size: 13.5px;
+  .footer-cta-wrap {
+    margin-top: 28px;
   }
   .footer-divider {
+    width: 100%;
     height: 1px;
-    background: rgba(255, 255, 255, 0.1);
-    margin-block: 28px 20px;
+    background: rgba(255, 255, 255, 0.08);
+    margin-block: 32px 24px;
   }
   .footer-bottom {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 16px;
+    gap: 12px;
     font-size: 13px;
-  }
-  .footer-credit {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .credit-label {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.5);
-  }
-  .credit-brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-weight: 700;
-    color: #ffffff;
-    font-size: 13px;
-  }
-  .syn-dot-sm {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background-color: var(--orange-primary);
-    box-shadow: 0 0 6px rgba(255, 106, 0, 0.8);
-    display: inline-block;
   }
   .footer-copy {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.5);
     font-weight: 600;
     letter-spacing: 0.02em;
+  }
+  .synfusion-credit {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    padding-bottom: 2px;
+  }
+  .synfusion-credit::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--orange-primary);
+    border-radius: 2px;
   }
 
   /* Animations & Fallbacks */
@@ -1654,7 +1634,7 @@
 
       <div class='nav-actions'>
         <div class='header-mascot-avatar' title='Brand Mascot'>
-          <img src='https://i.postimg.cc/Kvsw1ZVQ/file-00000000997c821193aca4058753e773.png' alt='SM Mascot' onerror='this.onerror=null; this.style.display="none";'/>
+          <img src='https://i.postimg.cc/Kj7fzCck/24231.png' alt='SM Mascot' onerror='this.onerror=null; this.style.display="none";'/>
           <span>SM</span>
         </div>
         <a class='btn btn-primary header-cta-btn' href='#contact'>Get a Quote <span class='icon-arr'>&#8594;</span></a>
@@ -1709,7 +1689,6 @@
 
           <!-- Hero Visual & Mascot Stage -->
           <div class='hero-visual-stage' id='heroVisualStage'>
-            <div class='hero-glow-bg'></div>
 
             <!-- Floating Card 1 -->
             <div class='float-card float-card-1'>
@@ -1724,15 +1703,13 @@
 
             <!-- Wolf Brand Mascot -->
             <div class='wolf-mascot-container'>
-              <img class='wolf-mascot-img' id='wolfMascotImg' src='https://i.postimg.cc/Kvsw1ZVQ/file-00000000997c821193aca4058753e773.png' alt='SM Traders Brand Mascot' onerror='this.onerror=null; this.style.display="none"; document.getElementById("wolfMascotFallback").style.display="flex";'/>
+              <img class='wolf-mascot-img' id='wolfMascotImg' src='https://i.postimg.cc/Kj7fzCck/24231.png' alt='SM Traders Brand Mascot' onerror='this.onerror=null; this.style.display="none"; document.getElementById("wolfMascotFallback").style.display="flex";'/>
               <div id='wolfMascotFallback' style='display:none; width:280px; height:320px; border-radius:24px; background:linear-gradient(135deg, var(--charcoal), var(--dark)); border:1px solid var(--border); flex-direction:column; align-items:center; justify-content:center; padding:24px; text-align:center; box-shadow:var(--shadow-lg);'>
                 <svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 24 24' fill='none' stroke='var(--orange-primary)' stroke-width='1.5'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg>
                 <strong style='margin-top:16px; color:#ffffff; font-size:18px;'>SM TRADERS</strong>
                 <span style='color:var(--orange-primary); font-size:12px; font-weight:800; margin-top:4px;'>BRAND MASCOT</span>
               </div>
               <div class='wolf-ground-stage'>
-                <div class='wolf-ground-glow'></div>
-                <div class='wolf-ground-energy'></div>
                 <div class='wolf-ground-shadow'></div>
               </div>
             </div>
@@ -2070,7 +2047,7 @@
             </div>
             <div class='contact-info-card'>
               <b>PROPRIETORS</b>
-              <p>Mangesh Yendhe (Owner)<br/>Omkar Yendhe (Co-Founder)</p>
+              <p>Mangesh Yendhe (Shop Owner)<br/>Omkar Yendhe (Electrician)</p>
             </div>
             <div class='contact-info-card'>
               <b>SERVICES</b>
@@ -2133,43 +2110,31 @@
   </div>
 
   <!-- Footer -->
-  <footer class='footer'>
-    <div class='container'>
-      <div class='footer-main'>
-        <div class='footer-brand'>
-          <a class='brand-logo' href='#top' aria-label='SM Traders Home'>
-            <span class='brand-mark'>SM</span>
-            <span class='brand-text'>
-              <strong style='color:#ffffff'>SM TRADERS</strong>
-              <span style='color:var(--orange-primary)'>Electrical &#8226; Solar &#8226; Installation</span>
-            </span>
-          </a>
-        </div>
+  <footer class='footer-wrapper'>
+    <div class='footer-card'>
+      <div class='footer-brand-title'>SM TRADERS</div>
+      <div class='footer-tagline'>Electrical &#8226; Solar &#8226; Installation &#8226; Maintenance</div>
 
-        <nav class='footer-nav' aria-label='Footer Navigation'>
-          <a href='#top'>Home</a>
-          <a href='#services'>Services</a>
-          <a href='#solar-roadmap'>Solar</a>
-          <a href='#work'>Our Work</a>
-          <a href='#owners'>About</a>
-          <a href='#contact'>Contact</a>
-        </nav>
+      <nav class='footer-nav' aria-label='Footer Navigation'>
+        <a href='#top'>Home</a>
+        <a href='#services'>Services</a>
+        <a href='#solar-roadmap'>Solar</a>
+        <a href='#work'>Our Work</a>
+        <a href='#owners'>About</a>
+        <a href='#contact'>Contact</a>
+      </nav>
 
-        <div class='footer-action'>
-          <a class='btn btn-primary btn-sm' href='#contact'>Get a Quote <span class='icon-arr'>&#8594;</span></a>
-        </div>
+      <div class='footer-cta-wrap'>
+        <a class='btn btn-primary' href='#contact'>Get a Quote <span class='icon-arr'>&#8594;</span></a>
       </div>
 
       <div class='footer-divider'></div>
 
       <div class='footer-bottom'>
-        <div class='footer-credit'>
-          <span class='credit-label'>Designed &amp; Developed by</span>
-          <span class='credit-brand'><span class='syn-dot-sm'></span> SynFusion</span>
-        </div>
         <div class='footer-copy'>
           &#169; <span id='yearSpan'>2026</span> SM TRADERS
         </div>
+        <div class='synfusion-credit'>SynFusion</div>
       </div>
     </div>
   </footer>
@@ -2191,6 +2156,17 @@
   (function () {
     "use strict";
 
+    /* Inject skin stylesheet if loaded as raw XML in browser */
+    try {
+      var skinTag = document.querySelector("b\\:skin, skin");
+      if (skinTag && skinTag.textContent) {
+        var styleEl = document.createElementNS("http://www.w3.org/1999/xhtml", "style");
+        styleEl.setAttribute("type", "text/css");
+        styleEl.textContent = skinTag.textContent;
+        document.head.appendChild(styleEl);
+      }
+    } catch (e) {}
+
     /* Central Site Configuration Object */
     var SM_CONFIG = {
       businessName: "SM Traders",
@@ -2198,19 +2174,13 @@
       owners: [
         {
           name: "Mangesh Yendhe",
-          role: "OWNER",
-          focus: "Electrical &amp; Solar Solutions",
-          initials: "MY",
-          tags: ["Electrical", "Solar", "Installation"],
-          bio: "Hands-on electrical professional leading major electrical installations, rooftop solar projects, and commercial power distribution."
+          role: "Shop Owner",
+          initials: "MY"
         },
         {
           name: "Omkar Yendhe",
-          role: "CO-FOUNDER",
-          focus: "Electrical &amp; Solar Solutions",
-          initials: "OY",
-          tags: ["Electrical", "Solar", "Service"],
-          bio: "Co-founding partner overseeing site management, client service coordination, and technical maintenance execution."
+          role: "Electrician",
+          initials: "OY"
         }
       ],
       projects: [
@@ -2250,16 +2220,12 @@
 
       container.innerHTML = SM_CONFIG.owners.map(function (owner) {
         var portraitHtml = '<div class="owner-initials">' + escapeXml(owner.initials) + '</div>';
-        var tagsHtml = owner.tags.map(function (t) { return '<span>' + escapeXml(t) + '</span>'; }).join('');
 
         return '<article class="owner-card fade-up">' +
           '<div class="owner-portrait-area">' + portraitHtml + '</div>' +
           '<div class="owner-info">' +
-            '<span class="role-badge">' + escapeXml(owner.role) + '</span>' +
             '<h3>' + escapeXml(owner.name) + '</h3>' +
-            '<span class="owner-company">SM TRADERS</span>' +
-            '<p>' + escapeXml(owner.bio) + '</p>' +
-            '<div class="owner-tags">' + tagsHtml + '</div>' +
+            '<span class="owner-role">' + escapeXml(owner.role) + '</span>' +
           '</div>' +
         '</article>';
       }).join('');

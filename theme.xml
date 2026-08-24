@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
 <html b:version='2'
+      b:responsive='true'
       class='v2'
       expr:dir='data:blog.languageDirection'
       expr:lang='data:blog.locale'
@@ -28,10 +29,6 @@
   <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&amp;display=swap' rel='stylesheet'/>
 
   <b:skin><![CDATA[
-  /* SM TRADERS BLOGGER SKIN */
-  ]]></b:skin>
-
-  <style type='text/css'>/*<![CDATA[*/
   /* ============================================================
      SM TRADERS — BRAND DESIGN SYSTEM (ORANGE + CHARCOAL)
      Design & Development by SynFusion
@@ -308,12 +305,18 @@
     align-items: center;
     justify-content: space-between;
     min-height: 68px;
-    gap: 16px;
+    gap: 12px;
   }
   .brand-logo {
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-shrink: 0;
+  }
+  @media (max-width: 767px) {
+    .header-cta-btn {
+      display: none !important;
+    }
   }
   .brand-mark {
     width: 42px;
@@ -347,18 +350,24 @@
     font-weight: 700;
   }
 
+  /* Navigation Breakpoint Logic:
+     <= 767px: Mobile (Hamburger visible, Desktop links hidden)
+     >= 768px: Desktop/Tablet Tab Navigation (Hamburger hidden, Desktop links visible)
+  */
   .nav-links {
     display: none;
     align-items: center;
     gap: 4px;
+    min-width: 0;
   }
   .nav-links a {
-    padding: 8px 16px;
+    padding: 8px 12px;
     border-radius: 999px;
-    font-size: 14.5px;
+    font-size: 14px;
     font-weight: 600;
     color: var(--text-main);
     transition: background 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
   }
   .nav-links a:hover {
     background: var(--orange-soft);
@@ -370,10 +379,49 @@
     font-weight: 700;
   }
 
+  @media (min-width: 768px) and (max-width: 899px) {
+    .nav-links {
+      display: flex;
+      gap: 2px;
+    }
+    .nav-links a {
+      padding: 6px 9px;
+      font-size: 13px;
+    }
+    .navbar-sticky .btn-primary {
+      padding: 8px 14px;
+      font-size: 13px;
+      min-height: 40px;
+    }
+  }
+
+  @media (min-width: 900px) and (max-width: 1023px) {
+    .nav-links {
+      display: flex;
+      gap: 4px;
+    }
+    .nav-links a {
+      padding: 8px 12px;
+      font-size: 14px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .nav-links {
+      display: flex;
+      gap: 6px;
+    }
+    .nav-links a {
+      padding: 8px 16px;
+      font-size: 14.5px;
+    }
+  }
+
   .nav-actions {
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-shrink: 0;
   }
   .header-mascot-avatar {
     display: none;
@@ -399,6 +447,8 @@
   .burger-btn {
     width: 44px;
     height: 44px;
+    min-width: 44px;
+    min-height: 44px;
     border-radius: var(--radius-sm);
     border: 1px solid var(--border);
     background: var(--warm-white);
@@ -407,6 +457,7 @@
     align-items: center;
     justify-content: center;
     gap: 5px;
+    flex-shrink: 0;
   }
   .burger-btn span {
     display: block;
@@ -415,6 +466,12 @@
     background-color: var(--text-main);
     border-radius: 2px;
     transition: transform 0.3s ease, opacity 0.2s ease;
+  }
+
+  @media (min-width: 768px) {
+    .burger-btn {
+      display: none !important;
+    }
   }
 
   /* Mobile Navigation Drawer */
@@ -456,6 +513,8 @@
   .drawer-close {
     width: 44px;
     height: 44px;
+    min-width: 44px;
+    min-height: 44px;
     border-radius: var(--radius-sm);
     border: 1px solid rgba(255, 255, 255, 0.2);
     display: grid;
@@ -503,7 +562,7 @@
     align-items: center;
   }
   .hero-content h1 {
-    font-size: clamp(34px, 6.5vw, 60px);
+    font-size: clamp(32px, 6vw, 60px);
     margin-top: 16px;
     letter-spacing: -0.04em;
     font-weight: 900;
@@ -1063,6 +1122,8 @@
   .lightbox-close {
     width: 44px;
     height: 44px;
+    min-width: 44px;
+    min-height: 44px;
     border-radius: var(--radius-sm);
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: #ffffff;
@@ -1383,12 +1444,6 @@
   }
 
   @media (min-width: 1024px) {
-    .nav-links {
-      display: flex;
-    }
-    .burger-btn {
-      display: none;
-    }
     .header-mascot-avatar {
       display: flex;
     }
@@ -1432,7 +1487,7 @@
       animation: none;
     }
   }
-  /*]]>*/</style>
+  ]]></b:skin>
 </head>
 <body>
 
@@ -1458,11 +1513,11 @@
 
       <div class='nav-actions'>
         <div class='header-mascot-avatar' title='Brand Mascot'>
-          <img src='https://i.postimg.cc/Kvsj1wZVQ/file-00000000997c821193aca4058753e773.png' alt='SM Mascot' onerror='this.onerror=null; this.style.display="none";'/>
+          <img src='https://i.postimg.cc/Kvsw1ZVQ/file-00000000997c821193aca4058753e773.png' alt='SM Mascot' onerror='this.onerror=null; this.style.display="none";'/>
           <span>SM</span>
         </div>
-        <a class='btn btn-primary' href='#contact'>Get a Quote <span class='icon-arr'>&#8594;</span></a>
-        <button class='burger-btn' id='burgerBtn' type='button' aria-label='Open Navigation Menu' aria-expanded='false'>
+        <a class='btn btn-primary header-cta-btn' href='#contact'>Get a Quote <span class='icon-arr'>&#8594;</span></a>
+        <button class='burger-btn' id='burgerBtn' type='button' aria-label='Open Navigation Menu' aria-controls='mobileDrawer' aria-expanded='false'>
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -1524,7 +1579,7 @@
 
             <!-- Wolf Brand Mascot -->
             <div class='wolf-mascot-container'>
-              <img class='wolf-mascot-img' id='wolfMascotImg' src='https://i.postimg.cc/Kvsj1wZVQ/file-00000000997c821193aca4058753e773.png' alt='SM Traders Brand Mascot' onerror='this.onerror=null; this.style.display="none"; document.getElementById("wolfMascotFallback").style.display="flex";'/>
+              <img class='wolf-mascot-img' id='wolfMascotImg' src='https://i.postimg.cc/Kvsw1ZVQ/file-00000000997c821193aca4058753e773.png' alt='SM Traders Brand Mascot' onerror='this.onerror=null; this.style.display="none"; document.getElementById("wolfMascotFallback").style.display="flex";'/>
               <div id='wolfMascotFallback' style='display:none; width:280px; height:320px; border-radius:24px; background:linear-gradient(135deg, var(--charcoal), var(--dark)); border:1px solid var(--border); flex-direction:column; align-items:center; justify-content:center; padding:24px; text-align:center; box-shadow:var(--shadow-lg);'>
                 <svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 24 24' fill='none' stroke='var(--orange-primary)' stroke-width='1.5'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg>
                 <strong style='margin-top:16px; color:#ffffff; font-size:18px;'>SM TRADERS</strong>
@@ -2356,26 +2411,6 @@
       }, 50);
     }
 
-    /* Mascot Fallback for Expired Remote Hosting */
-    function handleMascotImageFallback() {
-      var wolfImg = $("#wolfMascotImg");
-      var fallback = $("#wolfMascotFallback");
-      if (!wolfImg) return;
-
-      function checkImage() {
-        if (wolfImg.naturalWidth === 500 && wolfImg.naturalHeight === 500) {
-          wolfImg.style.display = "none";
-          if (fallback) fallback.style.display = "flex";
-        }
-      }
-
-      if (wolfImg.complete) {
-        checkImage();
-      } else {
-        wolfImg.addEventListener("load", checkImage);
-      }
-    }
-
     /* Set Year */
     function initYear() {
       var yr = $("#yearSpan");
@@ -2384,7 +2419,6 @@
 
     /* Boot initialization */
     function init() {
-      handleMascotImageFallback();
       renderOwners();
       renderPortfolio();
       initPortfolioFilters();

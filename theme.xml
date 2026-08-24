@@ -304,13 +304,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-height: 68px;
+    min-height: 64px;
+    padding-inline: 16px;
     gap: 12px;
   }
   .brand-logo {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     flex-shrink: 0;
   }
   @media (max-width: 767px) {
@@ -319,8 +320,8 @@
     }
   }
   .brand-mark {
-    width: 42px;
-    height: 42px;
+    width: 38px;
+    height: 38px;
     border-radius: var(--radius-sm);
     background: linear-gradient(135deg, var(--charcoal), var(--soft-black));
     border: 1px solid rgba(255, 106, 0, 0.3);
@@ -328,7 +329,7 @@
     display: grid;
     place-items: center;
     font-weight: 900;
-    font-size: 16px;
+    font-size: 15px;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
   }
   .brand-text {
@@ -337,15 +338,15 @@
     line-height: 1.15;
   }
   .brand-text strong {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 900;
     letter-spacing: 0.02em;
     color: var(--text-main);
   }
   .brand-text span {
-    font-size: 11px;
+    font-size: 10.5px;
     color: var(--orange-primary);
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     font-weight: 700;
   }
@@ -422,6 +423,7 @@
     align-items: center;
     gap: 12px;
     flex-shrink: 0;
+    margin-left: auto;
   }
   .header-mascot-avatar {
     display: none;
@@ -445,10 +447,10 @@
   }
 
   .burger-btn {
-    width: 44px;
-    height: 44px;
-    min-width: 44px;
-    min-height: 44px;
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
     border-radius: var(--radius-sm);
     border: 1px solid var(--border);
     background: var(--warm-white);
@@ -551,15 +553,56 @@
 
   /* Hero Section */
   .hero-sec {
-    padding-block: clamp(36px, 6vw, 72px) clamp(48px, 8vw, 96px);
+    padding-block: clamp(32px, 5vw, 64px) clamp(40px, 6vw, 80px);
     background: radial-gradient(70% 50% at 80% 20%, rgba(255, 106, 0, 0.12), transparent 70%),
                 radial-gradient(50% 40% at 10% 80%, rgba(16, 16, 16, 0.05), transparent 70%);
   }
   .hero-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    gap: clamp(32px, 5vw, 64px);
+    gap: clamp(24px, 4vw, 56px);
     align-items: center;
+  }
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  @media (max-width: 767px) {
+    .hero-content {
+      align-items: center;
+      text-align: center;
+    }
+  }
+  .synfusion-hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: 0.04em;
+    margin-bottom: 10px;
+  }
+  .syn-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--orange-primary);
+    box-shadow: 0 0 8px rgba(255, 106, 0, 0.6);
+    animation: synPulse 2.5s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  @keyframes synPulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 1;
+      box-shadow: 0 0 12px rgba(255, 106, 0, 0.95);
+    }
   }
   .hero-content h1 {
     font-size: clamp(32px, 6vw, 60px);
@@ -583,18 +626,20 @@
   .hero-visual-stage {
     position: relative;
     width: 100%;
+    max-width: 100%;
+    min-width: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 30px;
+    padding-bottom: 0px;
   }
   .hero-glow-bg {
     position: absolute;
-    width: 80%;
-    height: 80%;
+    width: 75%;
+    height: 75%;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 106, 0, 0.28) 0%, rgba(255, 106, 0, 0) 70%);
-    filter: blur(40px);
+    background: radial-gradient(circle, rgba(255, 106, 0, 0.20) 0%, rgba(255, 106, 0, 0) 70%);
+    filter: blur(36px);
     z-index: 1;
     pointer-events: none;
   }
@@ -602,26 +647,54 @@
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: 420px;
+    max-width: 380px;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   .wolf-mascot-img {
     width: 100%;
-    max-height: 480px;
+    max-width: 100%;
+    height: auto;
+    max-height: 420px;
     object-fit: contain;
-    filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.18));
+    filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.16));
     transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
   }
-  .wolf-ground-shadow {
-    width: 70%;
-    height: 20px;
-    margin-top: -10px;
-    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 75%);
-    border-radius: 50%;
-    z-index: 1;
+  /* Wolf Ground Composition */
+  .wolf-ground-stage {
+    position: relative;
+    width: 85%;
+    height: 36px;
+    margin-top: -12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     pointer-events: none;
+    z-index: 1;
+  }
+  .wolf-ground-glow {
+    position: absolute;
+    width: 90%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(255, 106, 0, 0.22) 0%, rgba(255, 106, 0, 0) 70%);
+    border-radius: 50%;
+    filter: blur(6px);
+  }
+  .wolf-ground-energy {
+    position: absolute;
+    width: 75%;
+    height: 12px;
+    background: radial-gradient(ellipse at center, rgba(255, 106, 0, 0.15) 0%, transparent 80%);
+    border-top: 1px dashed rgba(255, 106, 0, 0.3);
+  }
+  .wolf-ground-shadow {
+    position: absolute;
+    width: 70%;
+    height: 16px;
+    background: radial-gradient(ellipse at center, rgba(16, 16, 16, 0.40) 0%, rgba(16, 16, 16, 0) 75%);
+    border-radius: 50%;
   }
 
   /* Hero Floating Cards */
@@ -805,14 +878,14 @@
      SOLAR ROADMAP — SIGNATURE INTERACTIVE SECTION
      ============================================================ */
   .solar-roadmap-sec {
-    background: var(--charcoal);
-    color: var(--warm-white);
-    padding-block: clamp(56px, 8vw, 112px);
+    background: var(--bg-light);
+    color: var(--text-main);
+    padding-block: clamp(48px, 6vw, 88px);
     overflow: hidden;
   }
   .solar-roadmap-header {
     text-align: center;
-    max-width: 700px;
+    max-width: 680px;
     margin-inline: auto;
   }
   .solar-roadmap-header .eyebrow {
@@ -821,32 +894,35 @@
   .solar-roadmap-header .eyebrow::before {
     display: none;
   }
+  .solar-roadmap-header h2.sec-heading {
+    color: var(--charcoal);
+  }
 
   /* Desktop Horizontal Roadmap */
   .roadmap-desktop-wrap {
     display: none;
-    margin-top: 60px;
+    margin-top: 48px;
     position: relative;
-    padding-block: 20px 40px;
+    padding-block: 16px 24px;
   }
   .roadmap-path-svg {
     position: absolute;
-    top: 50px;
+    top: 40px;
     left: 5%;
     width: 90%;
-    height: 120px;
+    height: 100px;
     z-index: 1;
     pointer-events: none;
   }
   .roadmap-path-line {
-    stroke: rgba(255, 255, 255, 0.15);
-    stroke-width: 4;
-    stroke-dasharray: 8 8;
+    stroke: rgba(16, 16, 16, 0.12);
+    stroke-width: 3;
+    stroke-dasharray: 6 6;
     fill: none;
   }
   .roadmap-path-active {
     stroke: var(--orange-primary);
-    stroke-width: 4;
+    stroke-width: 3;
     fill: none;
     transition: stroke-dashoffset 0.5s ease;
   }
@@ -856,25 +932,26 @@
     z-index: 2;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 20px;
   }
 
   .roadmap-node-card {
-    background: var(--dark);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: var(--radius-lg);
-    padding: 28px;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 22px;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: all 0.25s ease;
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
+    box-shadow: var(--shadow-sm);
   }
   .roadmap-node-card:hover, .roadmap-node-card.active {
     border-color: var(--orange-primary);
-    box-shadow: 0 12px 40px rgba(255, 106, 0, 0.22);
-    transform: translateY(-6px);
+    box-shadow: 0 8px 24px rgba(255, 106, 0, 0.15);
+    transform: translateY(-3px);
   }
   .node-header {
     display: flex;
@@ -882,96 +959,99 @@
     justify-content: space-between;
   }
   .node-circle {
-    width: 44px;
-    height: 44px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
-    background: rgba(255, 106, 0, 0.15);
-    border: 2px solid var(--orange-primary);
+    background: var(--orange-soft);
+    border: 1.5px solid var(--orange-primary);
     color: var(--orange-primary);
     display: grid;
     place-items: center;
-    font-weight: 900;
-    font-size: 16px;
-    box-shadow: 0 0 16px rgba(255, 106, 0, 0.3);
+    font-weight: 800;
+    font-size: 13px;
   }
   .node-tag {
-    font-size: 11px;
+    font-size: 10.5px;
     font-weight: 800;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.12em;
     color: var(--orange-primary);
     text-transform: uppercase;
   }
   .roadmap-node-card h3 {
-    font-size: 22px;
-    color: #ffffff;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--charcoal);
   }
   .roadmap-node-card p {
-    font-size: 14.5px;
-    color: rgba(255, 255, 255, 0.7);
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.5;
   }
 
   /* Node Visual Energy Flow Box */
   .node-flow-box {
-    margin-top: 8px;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: 4px;
+    background: var(--bg-light);
+    border: 1px solid var(--border);
     border-radius: var(--radius-sm);
-    padding: 12px 14px;
+    padding: 10px 12px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 6px;
-    font-size: 12px;
-    font-weight: 800;
-    color: var(--orange-primary);
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--text-main);
   }
   .flow-item {
     display: flex;
     align-items: center;
     gap: 4px;
-    color: #ffffff;
+    color: var(--text-main);
   }
   .flow-arrow {
     color: var(--orange-primary);
-    font-weight: 900;
+    font-weight: 800;
   }
 
   /* Mobile Vertical Roadmap Timeline */
   .roadmap-mobile-timeline {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    margin-top: 36px;
+    gap: 16px;
+    margin-top: 28px;
     position: relative;
-    padding-left: 24px;
-    border-left: 3px solid var(--orange-primary);
+    padding-left: 20px;
+    border-left: 2px solid var(--orange-primary);
   }
   .mobile-node-card {
-    background: var(--dark);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: var(--warm-white);
+    border: 1px solid var(--border);
     border-radius: var(--radius-md);
-    padding: 20px;
+    padding: 18px;
     position: relative;
+    box-shadow: var(--shadow-sm);
   }
   .mobile-node-card::before {
     content: "";
     position: absolute;
-    left: -32px;
-    top: 24px;
-    width: 14px;
-    height: 14px;
+    left: -26px;
+    top: 22px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background: var(--orange-primary);
-    box-shadow: 0 0 12px var(--orange-primary);
+    box-shadow: 0 0 8px var(--orange-primary);
   }
   .mobile-node-card h3 {
-    font-size: 18px;
-    color: #ffffff;
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--charcoal);
   }
   .mobile-node-card p {
-    font-size: 14px;
-    margin-top: 6px;
-    color: rgba(255, 255, 255, 0.75);
+    font-size: 13.5px;
+    margin-top: 4px;
+    color: var(--muted);
   }
 
   /* Process Timeline Section */
@@ -1148,32 +1228,49 @@
   /* Owner Profiles / About Section */
   .owners-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 28px;
-    margin-top: 40px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 32px;
   }
+  @media (max-width: 480px) {
+    .owners-grid {
+      gap: 10px;
+    }
+  }
+
   .owner-card {
     background: var(--warm-white);
     border: 1px solid var(--border);
-    border-radius: var(--radius-xl);
-    padding: 24px;
+    border-radius: var(--radius-md);
+    padding: 16px;
     box-shadow: var(--shadow-sm);
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 24px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  @media (min-width: 600px) {
+    .owner-card {
+      flex-direction: row;
+      align-items: flex-start;
+      padding: 20px;
+      gap: 16px;
+    }
   }
   .owner-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-2px);
     box-shadow: var(--shadow-md);
   }
   .owner-portrait-area {
-    width: 100%;
-    aspect-ratio: 4/5;
-    border-radius: var(--radius-lg);
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    min-height: 56px;
+    border-radius: var(--radius-sm);
     overflow: hidden;
     position: relative;
     background: var(--charcoal);
+    flex-shrink: 0;
   }
   .owner-portrait-area img {
     width: 100%;
@@ -1185,7 +1282,7 @@
     height: 100%;
     display: grid;
     place-items: center;
-    font-size: clamp(48px, 10vw, 72px);
+    font-size: 20px;
     font-weight: 900;
     color: var(--orange-primary);
     background: radial-gradient(circle at 50% 30%, rgba(255, 106, 0, 0.25), transparent 70%), var(--charcoal);
@@ -1193,42 +1290,48 @@
   .owner-info {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 4px;
+    min-width: 0;
   }
   .role-badge {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 6px 14px;
+    padding: 2px 8px;
     border-radius: 999px;
     background: var(--orange-soft);
     color: var(--orange-primary);
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 800;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.1em;
     align-self: flex-start;
   }
   .owner-info h3 {
-    font-size: clamp(22px, 3vw, 28px);
+    font-size: clamp(15px, 2vw, 18px);
+    font-weight: 800;
+    color: var(--charcoal);
+    line-height: 1.2;
+    margin-top: 2px;
   }
   .owner-company {
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.15em;
+    display: none;
+  }
+  .owner-info p {
+    font-size: 12.5px;
+    line-height: 1.45;
     color: var(--muted);
-    text-transform: uppercase;
+    margin-top: 2px;
   }
   .owner-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 4px;
+    gap: 4px;
+    margin-top: 6px;
   }
   .owner-tags span {
-    padding: 4px 12px;
+    padding: 2px 8px;
     border-radius: 999px;
     border: 1px solid var(--border);
-    font-size: 12px;
+    font-size: 10.5px;
     font-weight: 700;
     color: var(--text-main);
   }
@@ -1359,43 +1462,81 @@
   .footer {
     background: var(--charcoal);
     color: rgba(255, 255, 255, 0.7);
-    padding-block: clamp(48px, 6vw, 80px) clamp(32px, 4vw, 48px);
+    padding-block: clamp(36px, 5vw, 56px) 32px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
-  .footer-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 32px;
-  }
-  .footer h4 {
-    color: #ffffff;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-  .footer ul li {
-    margin-bottom: 10px;
-    font-size: 14px;
-  }
-  .footer a:hover {
-    color: var(--orange-primary);
-  }
-  .footer-bottom {
-    margin-top: 40px;
-    padding-top: 24px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  .footer-main {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    align-items: center;
     justify-content: space-between;
+    gap: 20px;
+  }
+  .footer-brand .brand-logo {
+    gap: 10px;
+  }
+  .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 18px;
+  }
+  .footer-nav a {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.2s ease;
+  }
+  .footer-nav a:hover {
+    color: var(--orange-primary);
+  }
+  .footer-action .btn-sm {
+    min-height: 40px;
+    padding: 8px 18px;
+    font-size: 13.5px;
+  }
+  .footer-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-block: 28px 20px;
+  }
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
     font-size: 13px;
   }
-  .footer-bottom em {
-    font-style: normal;
-    color: var(--orange-primary);
+  .footer-credit {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .credit-label {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .credit-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     font-weight: 700;
+    color: #ffffff;
+    font-size: 13px;
+  }
+  .syn-dot-sm {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--orange-primary);
+    box-shadow: 0 0 6px rgba(255, 106, 0, 0.8);
+    display: inline-block;
+  }
+  .footer-copy {
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 600;
+    letter-spacing: 0.02em;
   }
 
   /* Animations & Fallbacks */
@@ -1483,8 +1624,8 @@
       opacity: 1;
       transform: none;
     }
-    .float-card {
-      animation: none;
+    .float-card, .syn-dot {
+      animation: none !important;
     }
   }
   ]]></b:skin>
@@ -1547,6 +1688,10 @@
       <div class='container'>
         <div class='hero-grid'>
           <div class='hero-content'>
+            <div class='synfusion-hero-tag'>
+              <span class='syn-dot'></span>
+              <span>SynFusion</span>
+            </div>
             <span class='eyebrow'>Electrical &#8226; Solar &#8226; Power</span>
             <h1>
               POWERING HOMES.<br/>
@@ -1585,7 +1730,11 @@
                 <strong style='margin-top:16px; color:#ffffff; font-size:18px;'>SM TRADERS</strong>
                 <span style='color:var(--orange-primary); font-size:12px; font-weight:800; margin-top:4px;'>BRAND MASCOT</span>
               </div>
-              <div class='wolf-ground-shadow'></div>
+              <div class='wolf-ground-stage'>
+                <div class='wolf-ground-glow'></div>
+                <div class='wolf-ground-energy'></div>
+                <div class='wolf-ground-shadow'></div>
+              </div>
             </div>
 
             <!-- Floating Card 2 -->
@@ -1714,7 +1863,7 @@
         <div class='solar-roadmap-header fade-up'>
           <span class='eyebrow'>Interactive Solar Guide</span>
           <h2 class='sec-heading'>Which Solar System Is Right For You?</h2>
-          <p class='sec-lead' style='color: rgba(255, 255, 255, 0.7);'>
+          <p class='sec-lead'>
             Explore the three common solar system configurations.
           </p>
         </div>
@@ -1986,54 +2135,41 @@
   <!-- Footer -->
   <footer class='footer'>
     <div class='container'>
-      <div class='footer-grid'>
-        <div>
-          <div class='brand-logo'>
+      <div class='footer-main'>
+        <div class='footer-brand'>
+          <a class='brand-logo' href='#top' aria-label='SM Traders Home'>
             <span class='brand-mark'>SM</span>
             <span class='brand-text'>
               <strong style='color:#ffffff'>SM TRADERS</strong>
-              <span style='color:var(--orange-primary)'>Electrical &amp; Solar Solutions</span>
+              <span style='color:var(--orange-primary)'>Electrical &#8226; Solar &#8226; Installation</span>
             </span>
-          </div>
-          <p style='margin-top:16px;font-size:14px;color:rgba(255,255,255,0.6)'>
-            Professional electrical services, solar installations, and maintenance for residential and commercial requirements.
-          </p>
+          </a>
         </div>
 
-        <div>
-          <h4>NAVIGATION</h4>
-          <ul>
-            <li><a href='#top'>Home</a></li>
-            <li><a href='#services'>Services</a></li>
-            <li><a href='#solar-roadmap'>Solar</a></li>
-            <li><a href='#work'>Our Work</a></li>
-            <li><a href='#owners'>About Us</a></li>
-            <li><a href='#contact'>Contact</a></li>
-          </ul>
-        </div>
+        <nav class='footer-nav' aria-label='Footer Navigation'>
+          <a href='#top'>Home</a>
+          <a href='#services'>Services</a>
+          <a href='#solar-roadmap'>Solar</a>
+          <a href='#work'>Our Work</a>
+          <a href='#owners'>About</a>
+          <a href='#contact'>Contact</a>
+        </nav>
 
-        <div>
-          <h4>PROPRIETORS</h4>
-          <ul>
-            <li>Mangesh Yendhe — Owner</li>
-            <li>Omkar Yendhe — Co-Founder</li>
-          </ul>
-        </div>
-
-        <div>
-          <h4>SERVICES</h4>
-          <ul>
-            <li>Electrical Installation</li>
-            <li>Rooftop Solar</li>
-            <li>House Wiring &amp; Repairs</li>
-            <li>Inverter &amp; Batteries</li>
-          </ul>
+        <div class='footer-action'>
+          <a class='btn btn-primary btn-sm' href='#contact'>Get a Quote <span class='icon-arr'>&#8594;</span></a>
         </div>
       </div>
 
+      <div class='footer-divider'></div>
+
       <div class='footer-bottom'>
-        <span>&#169; <span id='yearSpan'>2026</span> SM Traders. All rights reserved.</span>
-        <span>Designed &amp; Developed by <em>SynFusion</em></span>
+        <div class='footer-credit'>
+          <span class='credit-label'>Designed &amp; Developed by</span>
+          <span class='credit-brand'><span class='syn-dot-sm'></span> SynFusion</span>
+        </div>
+        <div class='footer-copy'>
+          &#169; <span id='yearSpan'>2026</span> SM TRADERS
+        </div>
       </div>
     </div>
   </footer>

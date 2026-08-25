@@ -96,14 +96,24 @@
   }
 
   /* Kill Default Blogger Wrappers & CMS tags */
-  b\:skin, skin, #navbar-iframe, #b-navbar-iframe, .blogger-attribution, .post-feeds, .feed-links,
+  b\:skin, skin, #navbar-iframe, #b-navbar-iframe, .blogger-attribution, .attribution, .post-feeds, .feed-links,
   #Attribution1, .status-msg-wrap, .blog-pager, .quickedit, .widget-item-control,
-  #outer-wrapper, #content-wrapper, #main-wrapper, #sidebar-wrapper, .blog-posts, .widget, .main {
+  #outer-wrapper, #content-wrapper, #main-wrapper, #sidebar-wrapper, .blog-posts, .widget, .main,
+  a[href*="blogger.com"], a[href*="blogspot.com"] {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
 
   .sm-cms-hide {
     display: none !important;
+    position: absolute !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
 
   /* Shared Container & Layout */
@@ -1182,11 +1192,12 @@
   }
 
   .contact-info-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border-dark);
+    background: #ffffff;
+    border: 1px solid var(--border);
     border-radius: var(--radius-md);
     padding: 20px;
     width: 100%;
+    box-shadow: var(--shadow-sm);
   }
 
   .contact-info-card b {
@@ -1199,17 +1210,18 @@
   }
 
   .contact-info-card p {
-    color: #ffffff;
+    color: var(--charcoal);
     font-size: 15px;
     font-weight: 600;
   }
 
   .contact-form {
-    background: var(--dark);
-    border: 1px solid var(--border-dark);
+    background: #ffffff;
+    border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     padding: 32px;
     width: 100%;
+    box-shadow: var(--shadow-sm);
   }
 
   .form-group {
@@ -1221,7 +1233,7 @@
     display: block;
     font-size: 13px;
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--charcoal);
     margin-bottom: 6px;
   }
 
@@ -1230,15 +1242,16 @@
     min-height: 48px;
     padding: 12px 16px;
     border-radius: var(--radius-sm);
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid var(--border-dark);
-    color: #ffffff;
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    color: var(--charcoal);
     font-size: 14px;
     outline: none;
   }
 
   .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
     border-color: var(--orange-primary);
+    background: #ffffff;
   }
 
   /* ============================================================
@@ -1321,7 +1334,7 @@
      CURVED FOOTER & SYNFUSION IDENTITY
      ============================================================ */
   .footer-wrapper {
-    background: transparent;
+    background: #ffffff;
     position: relative;
     width: 100%;
     overflow: hidden;
@@ -1331,7 +1344,8 @@
     width: 100%;
     overflow: hidden;
     line-height: 0;
-    margin-bottom: -1px;
+    margin-bottom: -2px;
+    background: #ffffff;
   }
 
   .footer-curve-svg {
@@ -1633,12 +1647,11 @@
 
           <div class='hero-content'>
             <h1 class='hero-h1'>
-              Powering Homes.<br/>
-              Powering Businesses.<br/>
-              <span class='highlight-text'>Powering What&#8217;s Next.</span>
+              Electrical &amp; Solar Solutions<br/>
+              <span class='highlight-text'>for Homes and Businesses.</span>
             </h1>
             <p class='hero-sub'>
-              Complete electrical and solar solutions for homes, shops and businesses.
+              Electrical work, products and solar solutions for your home, shop or business.
             </p>
             <div class='hero-ctas'>
               <a class='btn btn-primary' href='#contact'>Get a Quote &#8594;</a>
@@ -1785,12 +1798,12 @@
     </section>
 
     <!-- Contact Section -->
-    <section class='sec-padding bg-dark' id='contact'>
+    <section class='sec-padding bg-warm' id='contact'>
       <div class='container'>
         <div class='sec-header'>
           <span class='eyebrow'>GET IN TOUCH</span>
-          <h2 class='sec-heading' style='color:#ffffff;'>Contact Us</h2>
-          <p class='sec-lead' style='color:rgba(255,255,255,0.7);'>Get a quote for electrical work, products or solar setup.</p>
+          <h2 class='sec-heading'>Contact Us</h2>
+          <p class='sec-lead'>Get a quote for electrical work, products or solar setup.</p>
         </div>
 
         <div class='contact-grid'>
@@ -1819,7 +1832,7 @@
               <input type='tel' id='reqPhone' placeholder='Enter phone number' required='required'/>
             </div>
             <div class='form-group'>
-              <label for='reqService'>Service Requirement</label>
+              <label for='reqService'>What do you need?</label>
               <select id='reqService'>
                 <option value='Electrical Products Wholesale'>Electrical Products Wholesale</option>
                 <option value='Complete Electrical Work'>Complete Electrical Work</option>
@@ -1828,8 +1841,8 @@
               </select>
             </div>
             <div class='form-group'>
-              <label for='reqMsg'>Requirement Details</label>
-              <textarea id='reqMsg' rows='3' placeholder='Describe your requirement...'></textarea>
+              <label for='reqMsg'>Tell us what you need</label>
+              <textarea id='reqMsg' rows='3' placeholder='Tell us what work or product you need...'></textarea>
             </div>
             <button class='btn btn-primary btn-block' type='submit' id='submitFormBtn'>
               Get a Quote via WhatsApp &#8594;
@@ -1864,7 +1877,7 @@
   <footer class='footer-wrapper'>
     <div class='footer-curve-top'>
       <svg class='footer-curve-svg' viewBox='0 0 1440 96' fill='none' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' aria-hidden='true'>
-        <path d='M0,96 C480,0 960,0 1440,96 L1440,96 L0,96 Z' fill='#101010'/>
+        <path d='M0,0 C480,96 960,96 1440,0 L1440,96 L0,96 Z' fill='#101010'/>
       </svg>
     </div>
     <div class='footer-card'>
